@@ -1,10 +1,16 @@
 package com.nagp.assignment.devops.controller.it;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,7 +46,6 @@ public class NoteControllerTestIT {
 		note.setTitle("Test Title");
 		note.setContent("Test content");
 
-		noteController.createNote(note);
 		mockMvc.perform(post("/api/notes").contentType(MediaType.APPLICATION_JSON).content(asJsonString(note))).andExpect(status().isOk());
 	}
 
@@ -48,6 +53,16 @@ public class NoteControllerTestIT {
 	public void testGetNotes() throws Exception {
 		mockMvc.perform(get("/api/notes").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
+	
+	@AfterEach
+	public void finish() {
+		List<Note> notes = noteController.getAllNotes().stream().filter(n -> n.getTitle().equals("Test Title")).collect(Collectors.toList());
+		for(Note n: notes) {
+			noteController.deleteNote(n);
+		}
+		
+	}
+	
 	
 	public static String asJsonString(final Object obj) {
 	    try {
