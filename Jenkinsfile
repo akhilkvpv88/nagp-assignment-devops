@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+				label 'docker-agent'
+  	}
 
 	tools {
 	    maven 'Maven'
@@ -28,9 +30,7 @@ pipeline {
             }
         }
         stage('Build  & Push Docker Image') {
-        	agent {
-				label 'docker-agent'
-  			}
+        	
   			steps {
                 script {
                     dockerImage = docker.build 'akhilkvpv88/nagp-devops-assignment:v2'
