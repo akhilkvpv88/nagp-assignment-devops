@@ -1,6 +1,5 @@
 package com.nagp.assignment.devops.controller.it;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -9,7 +8,6 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
