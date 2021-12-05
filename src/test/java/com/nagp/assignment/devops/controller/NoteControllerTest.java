@@ -35,6 +35,8 @@ public class NoteControllerTest {
 		Note note = new Note();
 		note.setTitle("Test Title");
 		note.setContent("Test content");
+		
+		when(noteRepository.save(note)).thenReturn(note);
 
 		noteController.createNote(note);
 
