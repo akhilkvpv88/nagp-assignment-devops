@@ -17,3 +17,7 @@ How to Run
 5. Run application container:
    docker run -p 8082:8082 --name nagp-assignment-devops --link nagp-devops-mysql -d akhil/nagp-devops-assignment
 
+6. Open browser and try to access:
+   http://localhost:8082/api/notes
+   You can also use postman collection to create and then fetch notes.
+
