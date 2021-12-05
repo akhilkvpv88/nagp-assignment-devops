@@ -28,7 +28,9 @@ pipeline {
             }
         }
         stage('Build  & Push Docker Image') {
-        	
+        	agent {
+				label 'docker-agent'
+  			}
   			steps {
                 script {
                     dockerImage = docker.build 'akhil/nagp-devops-assignment:v1'
