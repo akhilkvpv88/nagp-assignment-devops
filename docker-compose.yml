@@ -3,29 +3,20 @@ version: '3'
 services:
   notes-service:
     image: akhilkvpv88/nagp-devops-assignment:v1
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    volumes:
-      - /data/notes-service
     ports:
-      - "8080:8080"
+      - "8082:8082"
     links:
-      - "nagp-devops-mysql-image:database"
+      - "nagp-devops-mysql:database"
 
-services:
-  nagp-devops-mysql-image:
+  nagp-devops-mysql:
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'sa'
       MYSQL_PASSWORD: 'sa'
       MYSQL_ROOT_PASSWORD: 'root'
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
+    
     volumes:
-      - my-db:/var/lib/mysql
+      - my-db:/var/lib/mysql8
 volumes:
   my-db:

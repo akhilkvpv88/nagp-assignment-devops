@@ -42,16 +42,6 @@ pipeline {
             }
                                         
         }
-        
-        stage('Run Application') {
-        	agent {
-				label 'docker-agent'
-  			}
-  			steps {
-                sh 'docker-compose up'
-            }
-                                        
-        }
 
         
 
