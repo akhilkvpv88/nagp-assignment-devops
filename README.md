@@ -1,19 +1,15 @@
 # nagp-assignment-devops
-NAGP DevOps Assignment
+TASK 1
+
+This is the Task 1 of NAGP DevOps Assignment. This is what it contains:
+
+A NOTES APP microservice which allows users to create and fetch notes. The service is using Maven as a build tool. As specified in the request, it contains 2 Unit test cases and 2 Integration test cases. 
 
 How to Run
-1. Pull docker image for mysql:
-   docker pull mysql:8.0
+1. mvn clean compile to build the project
 
-2. Run docker container for mysql:
-   docker run --name nagp-devops-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=notes_app -e MYSQL_USERNAME=sa -e MYSQL_PASWORD=sa  -d mysql:8.0
+2. mvn clean test to run Unit test cases.
 
-3. Build application package:
-   mvn clean package -DskipTests
+3. mvn clean package to build jar and also run Integration test cases. 
 
-4. Build docker image for application:
-   docker build -t akhil/nagp-devops-assignment .  
-
-5. Run application container:
-   docker run -p 8082:8082 --name nagp-assignment-devops --link nagp-devops-mysql -d akhil/nagp-devops-assignment
 
