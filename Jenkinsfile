@@ -33,7 +33,7 @@ pipeline {
   			}
   			steps {
                 script {
-                    dockerImage = docker.build 'akhil/nagp-devops-assignment:v1'
+                    dockerImage = docker.build 'akhilkvpv88/nagp-devops-assignment:v1'
                     docker.withRegistry('',dockerhubCredential) {
                         dockerImage.push("v1");  
                     }
