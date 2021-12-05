@@ -6,10 +6,10 @@ How to Run
    docker pull mysql:8.0
 
 2. Run docker container for mysql:
-   docker run --name nagp-devops-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=notes_app -e MYSQL_USERNAME=sa -e MYSQL_PASWORD=sa  -d mysql:8.0
+   docker run --name nagp-devops-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=db -e MYSQL_USERNAME=sa -e MYSQL_PASWORD=sa  -d mysql:8.0
 
 3. Build application package:
-   mvn clean package -DskipTests
+   mvn clean package
 
 4. Build docker image for application:
    docker build -t akhil/nagp-devops-assignment .  
