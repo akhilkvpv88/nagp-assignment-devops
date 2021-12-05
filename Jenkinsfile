@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-		label 'docker-agent'
-    }
+    agent any
 
 	tools {
 	    maven 'Maven'
@@ -20,6 +18,9 @@ pipeline {
             }
         }
         stage('Package') {
+        	agent {
+				label 'docker-agent'
+  			}
             steps {
                 sh 'mvn clean package'
             }
