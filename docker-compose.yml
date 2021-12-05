@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-  notes-service:
-    image: akhilkvpv88/nagp-devops-assignment:v1
-    ports:
-      - "8082:8082"
-    links:
-      - "nagp-devops-mysql:database"
-
   nagp-devops-mysql:
     image: mysql:8.0
     environment:
@@ -18,5 +11,14 @@ services:
     
     volumes:
       - my-db:/var/lib/mysql8
+
+  notes-service:
+    image: akhilkvpv88/nagp-devops-assignment:v2
+    ports:
+      - "8082:8082"
+    links:
+      - "nagp-devops-mysql:database"
+
+  
 volumes:
   my-db:

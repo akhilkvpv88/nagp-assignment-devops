@@ -25,7 +25,7 @@ public class NoteController {
 	
 	@PostMapping("/notes")
 	public Note createNote(@RequestBody Note note) {
-		log.info("Creating note with title {}", note.getTitle());
+		log.info("Creating note with the title {}", note.getTitle());
 	    return noteRepository.save(note);
 	}
 	
