@@ -4,6 +4,11 @@ pipeline {
 	tools {
 	    maven 'Maven'
 	}
+	
+	environment {
+		dockerhubCredential = 'dockerhubCredential'
+	}
+
     
     stages {
         stage('Build') {
@@ -18,13 +23,25 @@ pipeline {
             }
         }
         stage('Package') {
-        	agent {
-				label 'docker-agent'
-  			}
             steps {
                 sh 'mvn clean package'
             }
         }
+        stage('Build  & Push Docker Image') {
+        	agent {
+				label 'docker-agent'
+  			}
+  			steps {
+                script {
+                    dockerImage = docker.build 'akhil/nagp-devops-assignment:v1'
+                    docker.withRegistry('',dockerhubCredential);
+					dockerImage.push("v1");                    
+                }
+
+            }
+                                        
+        }
+
         
 
     }
